@@ -12,7 +12,7 @@ class PokemonDetailsModule {
     func createModule() -> PokemonDetailsViewController {
         let detailsViewController = PokemonDetailsViewController(nibName: "PokemonDetailsViewController", bundle: nil)
         detailsViewController.viewModel = PokemonDetailsViewModel(router: PokemonDetailsRouter())
-        detailsViewController.viewModel.router.viewController = detailsViewController
+        detailsViewController.viewModel.router?.viewController = detailsViewController
         return detailsViewController
     }
 }
@@ -26,6 +26,5 @@ class PokemonDetailsRouter {
 }
 
 extension PokemonDetailsRouter: PokemonDetailsRouterProtocol {
-    
     func goBack() {}
 }

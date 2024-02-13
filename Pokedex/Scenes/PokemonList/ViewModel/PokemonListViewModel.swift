@@ -9,10 +9,10 @@ import Foundation
 import Combine
 
 final class PokemonListViewModel: ObservableObject {
-    var router: PokemonListRouter!
+    var router: PokemonListRouter?
     var service: PokemonServiceable
     
-    init(router: PokemonListRouter,
+    init(router: PokemonListRouter? = nil,
          service: PokemonServiceable) {
         self.router = router
         self.service = service
@@ -21,13 +21,10 @@ final class PokemonListViewModel: ObservableObject {
     @Published var pokemonList: [Pokemon] = []
     @Published var pokemonError: ApiError?
     private var cancellables: Set<AnyCancellable> = []
-    
-    func onAppear() {
-        fetchPokemons()
-    }
-    
-    func fetchPokemons() {
-        Task(priority: .background) {
+
+    @MainActor
+    func fetchPokemons() async {
+//        Task(priority: .background) {
             let result = await service.getPokemons()
             switch result {
             case .success(let usersResponse):
@@ -35,7 +32,7 @@ final class PokemonListViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
             }
-        }
+//        }
     }
     
     func setData(index: Int) -> PokemonListTableViewCellData {
@@ -48,6 +45,6 @@ final class PokemonListViewModel: ObservableObject {
     }
     
     func navigateToPokemonDetails(index: Int) {
-        router.routeToPokemonDetailScreen(pokemonList[index])
+        router?.routeToPokemonDetailScreen(pokemonList[index])
     }
 }

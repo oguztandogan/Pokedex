@@ -7,16 +7,13 @@
 
 import Foundation
 
-class PokemonDetailsViewModel {
-    var router: PokemonDetailsRouter
+class PokemonDetailsViewModel: ObservableObject {
+    var router: PokemonDetailsRouter?
     var pokemonData: Pokemon?
     
-    init(router: PokemonDetailsRouter, pokemonData: Pokemon? = nil) {
+    init(router: PokemonDetailsRouter? = nil,
+         pokemonData: Pokemon? = nil) {
         self.router = router
         self.pokemonData = pokemonData
     }
-    
-//    init(pokemonData: Pokemon) {
-//        self.pokemonData = pokemonData
-//    }
 }

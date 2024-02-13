@@ -19,7 +19,9 @@ class PokemonListViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         bindTableView()
-        viewModel.onAppear()
+        Task {
+            await viewModel.fetchPokemons()
+        }
         self.navigationItem.title = "Pokemon"
     }
     
