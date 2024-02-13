@@ -14,33 +14,28 @@ class MainView {
 
     init(window: UIWindow) {
         self.window = window
-        switchToUIKit()
+        switchToSwiftUI()
         self.viewTypeSubscriber.viewTypeSubject
             .sink { value in
-                // Perform actions based on the received view type value
                 switch value {
-                    case .uikit:
-                        print("Received UIKit view type in SomeOtherClass")
-                        // Update view accordingly for UIKit in SomeOtherClass
-                    case .swiftui:
-                        print("Received SwiftUI view type in SomeOtherClass")
-                        // Update view accordingly for SwiftUI in SomeOtherClass
+                case .uikit:
+                    self.switchToUIKit()
+                case .swiftui:
+                    self.switchToSwiftUI()
                 }
             }
             .store(in: &viewTypeSubscriber.cancellables)
     }
     
     private func switchToUIKit() {
-        let navigationController = UINavigationController(rootViewController: PokemonListModule().createModule())
+        let navigationController = UINavigationController(rootViewController: PokemonListModule().createModule(viewTypeSubscriber: viewTypeSubscriber))
         configureNavigationBar()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
     private func switchToSwiftUI() {
-        let window = UIWindow()
-        self.window = window
-        let hostingController = UIHostingController(rootView: PokemonListView())
+        let hostingController = UIHostingController(rootView: PokemonListView(viewTypePublisher: viewTypeSubscriber))
         window.rootViewController = hostingController
         window.makeKeyAndVisible()
     }
@@ -57,8 +52,5 @@ class MainView {
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        
     }
 }
-
-

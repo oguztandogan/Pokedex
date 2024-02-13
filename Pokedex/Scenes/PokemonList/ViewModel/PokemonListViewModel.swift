@@ -11,11 +11,14 @@ import Combine
 final class PokemonListViewModel: ObservableObject {
     var router: PokemonListRouter?
     var service: PokemonServiceable
+    var viewTypeSubscriber: ViewTypePublisher
     
     init(router: PokemonListRouter? = nil,
-         service: PokemonServiceable) {
+         service: PokemonServiceable,
+         viewTypeSubscriber: ViewTypePublisher) {
         self.router = router
         self.service = service
+        self.viewTypeSubscriber = viewTypeSubscriber
     }
     
     @Published var pokemonList: [Pokemon] = []
@@ -46,5 +49,9 @@ final class PokemonListViewModel: ObservableObject {
     
     func navigateToPokemonDetails(index: Int) {
         router?.routeToPokemonDetailScreen(pokemonList[index])
+    }
+    
+    func switchViewType(_ viewType: ViewType) {
+        viewTypeSubscriber.viewTypeSubject.send(viewType)
     }
 }

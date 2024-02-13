@@ -9,9 +9,9 @@ import UIKit
 
 class PokemonListModule {
     
-    func createModule() -> UIViewController {
+    func createModule(viewTypeSubscriber: ViewTypePublisher) -> UIViewController {
         let viewController = PokemonListViewController(nibName: "PokemonListViewController", bundle: nil)
-        viewController.viewModel = PokemonListViewModel(router: PokemonListRouter(), service: PokemonService())
+        viewController.viewModel = PokemonListViewModel(router: PokemonListRouter(), service: PokemonService(), viewTypeSubscriber: viewTypeSubscriber)
         viewController.viewModel.router?.viewController = viewController
         return viewController
     }

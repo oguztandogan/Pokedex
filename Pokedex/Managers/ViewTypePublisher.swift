@@ -15,13 +15,11 @@ enum ViewType {
 class ViewTypePublisher {
     var cancellables = Set<AnyCancellable>()
 
-    var viewTypeSubject = PassthroughSubject<ViewType, Never>()
+    var viewTypeSubject = CurrentValueSubject<ViewType, Never>(.uikit)
 
     init() {
         viewTypeSubject
             .sink { value in
-                // Perform actions based on the received boolean value
-                print(value)
             }
             .store(in: &cancellables)
     }

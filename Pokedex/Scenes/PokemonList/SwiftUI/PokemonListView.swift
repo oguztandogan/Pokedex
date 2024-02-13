@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct PokemonListView: View {
-    @StateObject private var viewModel: PokemonListViewModel = PokemonListViewModel(service: PokemonService())
+    @StateObject private var viewModel: PokemonListViewModel
+
+    init(viewTypePublisher: ViewTypePublisher) {
+        _viewModel = StateObject(wrappedValue: PokemonListViewModel(service: PokemonService(), viewTypeSubscriber: viewTypePublisher))
+    }
     
     var body: some View {
         NavigationStack {
@@ -44,6 +48,11 @@ struct PokemonListView: View {
             .navigationBarTitle("Pokemon", displayMode: .inline)
             .toolbarBackground(Color(red: 151/255, green: 124/255, blue: 242/255), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                Button("Switch") {
+                    viewModel.switchViewType(.uikit)
+                }
+            }
             .background(.black)
             .scrollContentBackground(.hidden)
         }
@@ -54,6 +63,6 @@ struct PokemonListView: View {
     }
 }
 
-#Preview {
-    PokemonListView()
-}
+//#Preview {
+//    PokemonListView()
+//}
