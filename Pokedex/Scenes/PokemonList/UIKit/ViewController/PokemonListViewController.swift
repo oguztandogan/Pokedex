@@ -17,12 +17,18 @@ class PokemonListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         setupTableView()
         bindTableView()
         Task {
             await viewModel.fetchPokemons()
         }
+    }
+    
+    private func configureNavigationBar() {
         self.navigationItem.title = "Pokemon"
+        let switchButton = UIBarButtonItem(title: "Switch", style: .plain, target: self, action: #selector(didTapSwitchButton))
+        self.navigationItem.setRightBarButton(switchButton, animated: true)
     }
     
     private func bindTableView() {
@@ -37,6 +43,10 @@ class PokemonListViewController: UIViewController {
     private func setupTableView() {
         let nib = UINib(nibName: "PokemonItemTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PokemonItemTableViewCell")
+    }
+    
+    @objc private func didTapSwitchButton() {
+        viewModel.switchViewType(.swiftui)
     }
 }
 

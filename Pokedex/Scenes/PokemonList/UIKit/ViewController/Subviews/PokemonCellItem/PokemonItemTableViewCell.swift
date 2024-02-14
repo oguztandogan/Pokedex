@@ -24,32 +24,6 @@ class PokemonItemTableViewCell: UITableViewCell {
     func setData(cellData: PokemonListTableViewCellData) {
         titleLabel.text = cellData.title
         descriptionLabel.text = cellData.description
-//        pokemonImageView.kf.setImage(with: URL(string: (cellData.imageUrl)))
-        ImageDownloader.shared.downloadImage(from: URL(string: (cellData.imageUrl))!) { image in
-//            image?.prepareForDisplay { [weak self] preparedImage in
-//                DispatchQueue.main.async {
-//                    self?.imageView.image = preparedImage
-//                }
-//            }
-            Task {
-                self.pokemonImageView.image = await image?.byPreparingForDisplay()
-            }
-        }
+        pokemonImageView.load(url: URL(string: (cellData.imageUrl))!)
     }
-}
-
-import SwiftUI
-class ImageDownloader {
-    static let shared = ImageDownloader()
-
-    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(nil)
-                return
-            }
-            completion(UIImage(data: data))
-        }.resume()
-    }
-
 }

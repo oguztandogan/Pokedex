@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class PokemonDetailsViewController: UIViewController {
 
@@ -21,7 +20,7 @@ class PokemonDetailsViewController: UIViewController {
     }
     
     func updateView() {
-        imageView.kf.setImage(with: URL(string: (viewModel.pokemonData?.imageURL)!))
+        imageView.load(url: URL(string: (viewModel.pokemonData?.imageURL)!)!)
         textView.text = viewModel.pokemonData?.description
     }
 }

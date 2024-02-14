@@ -27,15 +27,13 @@ final class PokemonListViewModel: ObservableObject {
 
     @MainActor
     func fetchPokemons() async {
-//        Task(priority: .background) {
-            let result = await service.getPokemons()
-            switch result {
-            case .success(let usersResponse):
-                pokemonList = usersResponse
-            case .failure(let error):
-                print(error)
-            }
-//        }
+        let result = await service.getPokemons()
+        switch result {
+        case .success(let usersResponse):
+            pokemonList = usersResponse
+        case .failure(let error):
+            print(error)
+        }
     }
     
     func setData(index: Int) -> PokemonListTableViewCellData {

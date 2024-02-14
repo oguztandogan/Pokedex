@@ -63,6 +63,6 @@ struct PokemonListView: View {
     }
 }
 
-//#Preview {
-//    PokemonListView()
-//}
+#Preview {
+    PokemonListView(viewTypePublisher: ViewTypePublisher())
+}

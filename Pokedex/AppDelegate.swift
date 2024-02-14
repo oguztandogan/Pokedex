@@ -17,19 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow()
         self.window = window
-//        let hostingController = UIHostingController(rootView: PokemonListView())
-//        window.rootViewController = hostingController
-//        window.makeKeyAndVisible()
-        MainView(window: window)
+        _ = MainView(window: window)
         return true
-        //        let windowScene = UIWindowScene(session: session, connectionOptions: connectionOptions)
-        //        self.window = UIWindow(windowScene: windowScene)
-        ////        let navigationController = UINavigationController(rootViewController: PokemonListModule().createModule())
-        ////        configureNavigationBar()
-        //        if let window = window {
-        //            window.rootViewController = navigationController
-        //            window.makeKeyAndVisible()
-        //        }
     }
     
     private func configureNavigationBar() {
