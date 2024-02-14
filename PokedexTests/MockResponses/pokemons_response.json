@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Bulbasaur",
+        "description": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    },
+    {
+        "id": 4,
+        "name": "Charmander",
+        "description": "It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    },
+    {
+        "id": 7,
+        "name": "Squirtle",
+        "description": "When it retracts its long neck into its shell, it squirts out water with vigorous force.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+    },
+    {
+        "id": 10,
+        "name": "Caterpie",
+        "description": "For protection, it releases a horrible stench from the antenna on its head to drive away enemies.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png"
+    },
+    {
+        "id": 13,
+        "name": "Weedle",
+        "description": "Beware of the sharp stinger on its head. It hides in grass and bushes where it eats leaves.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/13.png"
+    },
+    {
+        "id": 16,
+        "name": "Pidgey",
+        "description": "Very docile. If attacked, it will often kick up sand to protect itself rather than fight back.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/16.png"
+    },
+    {
+        "id": 19,
+        "name": "Rattata",
+        "description": "Will chew on anything with its fangs. If you see one, you can be certain that 40 more live in the area.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/19.png"
+    },
+    {
+        "id": 21,
+        "name": "Spearow",
+        "description": "Inept at flying high. However, it can fly around very fast to protect its territory.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/21.png"
+    },
+    {
+        "id": 23,
+        "name": "Ekans",
+        "description": "The older it gets, the longer it grows. At night, it wraps its long body around tree branches to rest.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/23.png"
+    },
+    {
+        "id": 25,
+        "name": "Pikachu",
+        "description": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    }
+]
